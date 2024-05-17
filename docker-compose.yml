@@ -1,0 +1,14 @@
+services:
+  bitwarden-backup:
+    image: ghcr.io/soleimanyben/bitwarden-backup:latest
+    container_name: bitwarden-backup
+    environment:
+      BACKUP_DELAY_MINUTES: 1440 # daily backup 24 * 60
+      BITWARDEN_ID: ID
+      BITWARDEN_SECRET: SECRET
+      BITWARDEN_MASTER_PASSWORD: MASTER_PASSWORD
+      BITWARDEN_SERVER: SERVER
+      GOOGLE_DRIVE_CREDENTIALS_NAME: backup-creds.json
+      GOOGLE_DRIVE_PARENT_ID: 1vc2r1T65NFcAiHf1tYmtNdin9IxMksEQ
+    volumes:
+      - /docker/appdata/vaultwarden-backup:/config
